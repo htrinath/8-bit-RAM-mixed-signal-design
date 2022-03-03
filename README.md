@@ -10,8 +10,8 @@ This repository presents the mixed signal design of 8-Bit RAM implemented using 
  * [Sensory Circuit](#Sensory-Circuit)
  * [Open Source Tools Used](#Open-Source-Tools-Used)
  * [Pre-Layout Schematics and Simulations](#Pre-Layout-Schematics-and-Simulations)
-   * [Schematics](##Schematics)
-   * [Simulations](##Simulations)
+   * [Schematics](#Schematics)
+   * [Simulations](#Simulations)
  * [Netlist of the Circuits](#Netlist-of-the-Circuits)
  * [Author](#Author)
  * [Acknowledgements](#Acknowledgements)
@@ -162,13 +162,13 @@ After making the schematic and generating the netlist go back to eSim; select th
 </p>
 
 # Netlist of the Circuits:
-• Refer to the netlist of the 3X8 Decoder here: <a href='differential_CSVCO.cir.out'>Netlist</a></br>
+• Refer to the netlist of the 3X8 Decoder here: <a href='3x8_decoder/3x8_decoder.cir.out'>Netlist</a></br>
 
-• Refer to the netlist of the 6T SRAM Cell here: <a href='Differential_csvco_5stage.cir.out'>Netlist</a></br>
+• Refer to the netlist of the 6T SRAM Cell here: <a href='6T_RAM_cell/6T_RAM_cell.cir.out'>Netlist</a></br>
 
-• Refer to the netlist of the 1-Bit SRAM here: <a href='Differential_csvco_5stage.cir.out'>Netlist</a></br>
+• Refer to the netlist of the 1-Bit SRAM here: <a href='1-bit_RAM/1-bit_RAM.cir.out'>Netlist</a></br>
 
-• Refer to the netlist of the 8-Bit SRAM here: <a href='Differential_csvco_5stage.cir.out'>Netlist</a></br>
+• Refer to the netlist of the 8-Bit SRAM here: <a href="8-bit_RAM/8-bit_RAM.cir.out'>Netlist</a></br>
 
 # Author:
 • Trinath Harikrishna, B.Tech(ECE), SRM Institute of Science and Technology, Kattankulattur, Chennai-603203.
