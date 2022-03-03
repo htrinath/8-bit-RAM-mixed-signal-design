@@ -1,0 +1,42 @@
+* d:\analog_vlsi\mixed_signal_projects\1-bit_ram\1-bit_ram.cir
+
+.include 6T_RAM_sub_ckt.sub
+.include PMOS-180nm.lib
+.include NMOS-180nm.lib
+v2  wl gnd pulse(0 1.8 5u 1p 1p 5u 10u)
+v3  din gnd pulse(0 1.8 0 1p 1p 1u 2u)
+* u1  dout plot_v1
+x1 wl bl blb q 6T_RAM_sub_ckt
+* u2  net-_u2-pad1_ net-_u2-pad2_ net-_u2-pad3_ net-_u2-pad4_ writer_ckt
+* u4  net-_u2-pad3_ net-_u2-pad4_ bl blb dac_bridge_2
+* u3  wl din net-_u2-pad1_ net-_u2-pad2_ adc_bridge_2
+v1  r_en gnd pulse(0 1.8 5u 1p 1p 10u 20u)
+m1 net-_m1-pad1_ q net-_m1-pad3_ net-_m1-pad1_ CMOSP W=360n L=180n M=1
+m4 net-_m1-pad1_ r_en net-_m1-pad3_ net-_m1-pad1_ CMOSP W=360n L=180n M=1
+m2 net-_m1-pad3_ q net-_m2-pad3_ net-_m2-pad3_ CMOSN W=180n L=180n M=1
+m3 net-_m2-pad3_ r_en gnd gnd CMOSN W=180n L=180n M=1
+v4 net-_m1-pad1_ gnd  dc 1.8
+m6 net-_m1-pad1_ net-_m1-pad3_ dout net-_m1-pad1_ CMOSP W=360n L=180n M=1
+m5 dout net-_m1-pad3_ gnd gnd CMOSN W=180n L=180n M=1
+* u5  wl plot_v1
+* u6  din plot_v1
+* u7  r_en plot_v1
+a1 [net-_u2-pad1_ ] [net-_u2-pad2_ ] [net-_u2-pad3_ ] [net-_u2-pad4_ ] u2
+a2 [net-_u2-pad3_ net-_u2-pad4_ ] [bl blb ] u4
+a3 [wl din ] [net-_u2-pad1_ net-_u2-pad2_ ] u3
+* Schematic Name:                             writer_ckt, NgSpice Name: writer_ckt
+.model u2 writer_ckt(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=1 ) 
+* Schematic Name:                             dac_bridge_2, NgSpice Name: dac_bridge
+.model u4 dac_bridge(out_low=0 out_high=1.8 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+* Schematic Name:                             adc_bridge_2, NgSpice Name: adc_bridge
+.model u3 adc_bridge(in_low=0 in_high=1.8 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+.tran 1e-06 20e-06 0e-00
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+plot v(wl)+8 v(din)+6 v(r_en)+4 v(dout)+2
+.endc
+.end

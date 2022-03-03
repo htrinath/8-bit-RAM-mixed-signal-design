@@ -1,0 +1,24 @@
+* D:\Analog_VLSI\mixed_signal_projects\6T_RAM_cell\6T_RAM_cell.cir
+
+* EESchema Netlist Version 1.1 (Spice format) creation date: 03/03/22 21:19:40
+
+* To exclude a component from the Spice Netlist add [Spice_Netlist_Enabled] user FIELD set to: N
+* To reorder the component spice node sequence add [Spice_Node_Sequence] user FIELD and define sequence: 2,1,0
+
+* Sheet Name: /
+M3  Net-_M3-Pad1_ q Net-_M2-Pad1_ Net-_M3-Pad1_ mosfet_p		
+M5  Net-_M3-Pad1_ Net-_M2-Pad1_ q Net-_M3-Pad1_ mosfet_p		
+M2  Net-_M2-Pad1_ q GND GND mosfet_n		
+M4  q Net-_M2-Pad1_ GND GND mosfet_n		
+M1  q wl bl GND mosfet_n		
+M6  blb wl Net-_M2-Pad1_ GND mosfet_n		
+v3  bl GND pulse		
+v4  blb GND pulse		
+v1  Net-_M3-Pad1_ GND DC		
+v2  wl GND pulse		
+U1  wl plot_v1		
+U2  bl plot_v1		
+U3  q plot_v1		
+U4  blb plot_v1		
+
+.end

@@ -1,0 +1,52 @@
+* d:\analog_vlsi\mixed_signal_projects\8-bit_ram\8-bit_ram.cir
+
+.include 1-bit_RAM_sub_ckt.sub
+* u1  net-_u1-pad1_ net-_u1-pad2_ net-_u1-pad3_ net-_u1-pad4_ net-_u1-pad5_ net-_u1-pad6_ net-_u1-pad7_ net-_u1-pad8_ net-_u1-pad9_ net-_u1-pad10_ net-_u1-pad11_ net-_u1-pad12_ decoder_3x8
+* u2  a2 a1 a0 net-_u2-pad4_ net-_u1-pad1_ net-_u1-pad2_ net-_u1-pad3_ net-_u1-pad4_ adc_bridge_4
+* u3  net-_u1-pad5_ net-_u1-pad6_ net-_u1-pad7_ net-_u1-pad8_ net-_u1-pad9_ net-_u1-pad10_ net-_u1-pad11_ net-_u1-pad12_ net-_u3-pad9_ net-_u3-pad10_ net-_u3-pad11_ net-_u3-pad12_ net-_u3-pad13_ net-_u3-pad14_ net-_u3-pad15_ net-_u3-pad16_ dac_bridge_8
+x1 din net-_u3-pad9_ r_en dout7 1-bit_RAM_sub_ckt
+x2 din net-_u3-pad10_ r_en dout6 1-bit_RAM_sub_ckt
+x3 din net-_u3-pad11_ r_en dout5 1-bit_RAM_sub_ckt
+x4 din net-_u3-pad12_ r_en dout4 1-bit_RAM_sub_ckt
+x5 din net-_u3-pad13_ r_en dout3 1-bit_RAM_sub_ckt
+x6 din net-_u3-pad14_ r_en dout2 1-bit_RAM_sub_ckt
+x7 din net-_u3-pad15_ r_en dout1 1-bit_RAM_sub_ckt
+x8 din net-_u3-pad16_ r_en dout0 1-bit_RAM_sub_ckt
+* u4  dout7 plot_v1
+* u5  dout6 plot_v1
+* u6  dout5 plot_v1
+* u7  dout4 plot_v1
+* u8  dout3 plot_v1
+* u9  dout2 plot_v1
+* u10  dout1 plot_v1
+* u11  dout0 plot_v1
+v1  a2 gnd pulse(0 1.8 0 1p 1p 4m 8m)
+v2  a1 gnd pulse(0 1.8 0 1p 1p 2m 4m)
+v3  a0 gnd pulse(0 1.8 0 1p 1p 1m 2m)
+v6  din gnd pulse(0 1.8 0 1p 1p 8m 14m)
+v4 net-_u2-pad4_ gnd  dc 1.8
+v5  r_en gnd pulse(0 1.8 0 1p 1p 16m 32m)
+* u12  a2 plot_v1
+* u13  a1 plot_v1
+* u14  a0 plot_v1
+* u15  din plot_v1
+* u16  r_en plot_v1
+a1 [net-_u1-pad1_ net-_u1-pad2_ net-_u1-pad3_ ] [net-_u1-pad4_ ] [net-_u1-pad5_ net-_u1-pad6_ net-_u1-pad7_ net-_u1-pad8_ net-_u1-pad9_ net-_u1-pad10_ net-_u1-pad11_ net-_u1-pad12_ ] u1
+a2 [a2 a1 a0 net-_u2-pad4_ ] [net-_u1-pad1_ net-_u1-pad2_ net-_u1-pad3_ net-_u1-pad4_ ] u2
+a3 [net-_u1-pad5_ net-_u1-pad6_ net-_u1-pad7_ net-_u1-pad8_ net-_u1-pad9_ net-_u1-pad10_ net-_u1-pad11_ net-_u1-pad12_ ] [net-_u3-pad9_ net-_u3-pad10_ net-_u3-pad11_ net-_u3-pad12_ net-_u3-pad13_ net-_u3-pad14_ net-_u3-pad15_ net-_u3-pad16_ ] u3
+* Schematic Name:                             decoder_3x8, NgSpice Name: decoder_3x8
+.model u1 decoder_3x8(rise_delay=1p fall_delay=1p input_load=1.0e-12 instance_id=1 ) 
+* Schematic Name:                             adc_bridge_4, NgSpice Name: adc_bridge
+.model u2 adc_bridge(in_low=0 in_high=1.8 rise_delay=1p fall_delay=1p ) 
+* Schematic Name:                             dac_bridge_8, NgSpice Name: dac_bridge
+.model u3 dac_bridge(out_low=0 out_high=1.8 out_undef=0.5 input_load=1.0e-12 t_rise=1p t_fall=1p ) 
+.tran 2e-03 20e-03 0e-00
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+plot v(a2)+24 v(a1)+22 v(a0)+20 v(din)+18 v(r_en)+16 v(dout7)+14 v(dout6)+12 v(dout5)+10 v(dout4)+8 v(dout3)+6 v(dout2)+4 v(dout1)+2 v(dout0)
+.endc
+.end

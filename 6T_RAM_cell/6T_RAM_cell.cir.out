@@ -1,0 +1,28 @@
+* d:\analog_vlsi\mixed_signal_projects\6t_ram_cell\6t_ram_cell.cir
+
+.include PMOS-180nm.lib
+.include NMOS-180nm.lib
+m3 net-_m3-pad1_ q net-_m2-pad1_ net-_m3-pad1_ CMOSP W=360n L=180n M=1
+m5 net-_m3-pad1_ net-_m2-pad1_ q net-_m3-pad1_ CMOSP W=360n L=180n M=1
+m2 net-_m2-pad1_ q gnd gnd CMOSN W=180n L=180n M=1
+m4 q net-_m2-pad1_ gnd gnd CMOSN W=180n L=180n M=1
+m1 q wl bl gnd CMOSN W=180n L=180n M=1
+m6 blb wl net-_m2-pad1_ gnd CMOSN W=180n L=180n M=1
+v3  bl gnd pulse(0 1.8 1u 1p 1p 1u 2u)
+v4  blb gnd pulse(0 1.8 0 1p 1p 1u 2u)
+v1 net-_m3-pad1_ gnd  dc 1.8
+v2  wl gnd pulse(0 1.8 0 1p 1p 5u 10u)
+* u1  wl plot_v1
+* u2  bl plot_v1
+* u3  q plot_v1
+* u4  blb plot_v1
+.tran 1e-06 10e-06 0e-00
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+plot v(wl)+8 v(bl)+6 v(blb)+4 v(q)+2
+.endc
+.end

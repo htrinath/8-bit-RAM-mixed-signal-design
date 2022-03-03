@@ -1,0 +1,40 @@
+* D:\Analog_VLSI\mixed_signal_projects\8-bit_RAM\8-bit_RAM.cir
+
+* EESchema Netlist Version 1.1 (Spice format) creation date: 03/03/22 12:18:00
+
+* To exclude a component from the Spice Netlist add [Spice_Netlist_Enabled] user FIELD set to: N
+* To reorder the component spice node sequence add [Spice_Node_Sequence] user FIELD and define sequence: 2,1,0
+
+* Sheet Name: /
+U1  Net-_U1-Pad1_ Net-_U1-Pad2_ Net-_U1-Pad3_ Net-_U1-Pad4_ Net-_U1-Pad5_ Net-_U1-Pad6_ Net-_U1-Pad7_ Net-_U1-Pad8_ Net-_U1-Pad9_ Net-_U1-Pad10_ Net-_U1-Pad11_ Net-_U1-Pad12_ decoder_3x8		
+U2  a2 a1 a0 Net-_U2-Pad4_ Net-_U1-Pad1_ Net-_U1-Pad2_ Net-_U1-Pad3_ Net-_U1-Pad4_ adc_bridge_4		
+U3  Net-_U1-Pad5_ Net-_U1-Pad6_ Net-_U1-Pad7_ Net-_U1-Pad8_ Net-_U1-Pad9_ Net-_U1-Pad10_ Net-_U1-Pad11_ Net-_U1-Pad12_ Net-_U3-Pad9_ Net-_U3-Pad10_ Net-_U3-Pad11_ Net-_U3-Pad12_ Net-_U3-Pad13_ Net-_U3-Pad14_ Net-_U3-Pad15_ Net-_U3-Pad16_ dac_bridge_8		
+X1  din Net-_U3-Pad9_ r_en dout7 1-Bit_RAM		
+X2  din Net-_U3-Pad10_ r_en dout6 1-Bit_RAM		
+X3  din Net-_U3-Pad11_ r_en dout5 1-Bit_RAM		
+X4  din Net-_U3-Pad12_ r_en dout4 1-Bit_RAM		
+X5  din Net-_U3-Pad13_ r_en dout3 1-Bit_RAM		
+X6  din Net-_U3-Pad14_ r_en dout2 1-Bit_RAM		
+X7  din Net-_U3-Pad15_ r_en dout1 1-Bit_RAM		
+X8  din Net-_U3-Pad16_ r_en dout0 1-Bit_RAM		
+U4  dout7 plot_v1		
+U5  dout6 plot_v1		
+U6  dout5 plot_v1		
+U7  dout4 plot_v1		
+U8  dout3 plot_v1		
+U9  dout2 plot_v1		
+U10  dout1 plot_v1		
+U11  dout0 plot_v1		
+v1  a2 GND pulse		
+v2  a1 GND pulse		
+v3  a0 GND pulse		
+v6  din GND pulse		
+v4  Net-_U2-Pad4_ GND DC		
+v5  r_en GND pulse		
+U12  a2 plot_v1		
+U13  a1 plot_v1		
+U14  a0 plot_v1		
+U15  din plot_v1		
+U16  r_en plot_v1		
+
+.end

@@ -1,0 +1,35 @@
+* d:\analog_vlsi\esim\fossee\esim\library\subcircuitlibrary\1-bit_ram_sub_ckt\1-bit_ram_sub_ckt.cir
+
+.include 6T_RAM_sub_ckt.sub
+.include NMOS-180nm.lib
+.include PMOS-180nm.lib
+x1 net-_u2-pad2_ net-_u4-pad3_ net-_u4-pad4_ net-_m1-pad2_ 6T_RAM_sub_ckt
+* u1  net-_u1-pad1_ net-_u1-pad2_ net-_u1-pad3_ net-_u1-pad4_ writer_ckt
+* u4  net-_u1-pad3_ net-_u1-pad4_ net-_u4-pad3_ net-_u4-pad4_ dac_bridge_2
+* u3  net-_u2-pad2_ net-_u2-pad1_ net-_u1-pad1_ net-_u1-pad2_ adc_bridge_2
+m1 net-_m1-pad1_ net-_m1-pad2_ net-_m1-pad3_ net-_m1-pad1_ CMOSP W=100u L=100u M=1
+m4 net-_m1-pad1_ net-_m3-pad2_ net-_m1-pad3_ net-_m1-pad1_ CMOSP W=360n L=180n M=1
+m2 net-_m1-pad3_ net-_m1-pad2_ net-_m2-pad3_ net-_m2-pad3_ CMOSN W=100u L=100u M=1
+m3 net-_m2-pad3_ net-_m3-pad2_ gnd gnd CMOSN W=180n L=180n M=1
+v1 net-_m1-pad1_ gnd  dc 1.8
+m6 net-_m1-pad1_ net-_m1-pad3_ net-_m5-pad1_ net-_m1-pad1_ CMOSP W=360n L=180n M=1
+m5 net-_m5-pad1_ net-_m1-pad3_ gnd gnd CMOSN W=180n L=180n M=1
+* u2  net-_u2-pad1_ net-_u2-pad2_ net-_m3-pad2_ net-_m5-pad1_ port
+a1 [net-_u1-pad1_ ] [net-_u1-pad2_ ] [net-_u1-pad3_ ] [net-_u1-pad4_ ] u1
+a2 [net-_u1-pad3_ net-_u1-pad4_ ] [net-_u4-pad3_ net-_u4-pad4_ ] u4
+a3 [net-_u2-pad2_ net-_u2-pad1_ ] [net-_u1-pad1_ net-_u1-pad2_ ] u3
+* Schematic Name:                             writer_ckt, NgSpice Name: writer_ckt
+.model u1 writer_ckt(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 instance_id=1 ) 
+* Schematic Name:                             dac_bridge_2, NgSpice Name: dac_bridge
+.model u4 dac_bridge(out_low=0 out_high=1.8 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+* Schematic Name:                             adc_bridge_2, NgSpice Name: adc_bridge
+.model u3 adc_bridge(in_low=0 in_high=1.8 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+.tran 0e-00 0e-00 0e-00
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+.endc
+.end

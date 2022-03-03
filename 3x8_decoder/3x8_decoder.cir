@@ -1,0 +1,28 @@
+* D:\Analog_VLSI\mixed_signal_projects\3x8_decoder\3x8_decoder.cir
+
+* EESchema Netlist Version 1.1 (Spice format) creation date: 03/03/22 20:47:13
+
+* To exclude a component from the Spice Netlist add [Spice_Netlist_Enabled] user FIELD set to: N
+* To reorder the component spice node sequence add [Spice_Node_Sequence] user FIELD and define sequence: 2,1,0
+
+* Sheet Name: /
+U1  Net-_U1-Pad1_ Net-_U1-Pad2_ Net-_U1-Pad3_ Net-_U1-Pad4_ Net-_U1-Pad5_ Net-_U1-Pad6_ Net-_U1-Pad7_ Net-_U1-Pad8_ Net-_U1-Pad9_ Net-_U1-Pad10_ Net-_U1-Pad11_ Net-_U1-Pad12_ decoder_3x8		
+U2  a2 a1 a0 Net-_U2-Pad4_ Net-_U1-Pad1_ Net-_U1-Pad2_ Net-_U1-Pad3_ Net-_U1-Pad4_ adc_bridge_4		
+U3  Net-_U1-Pad5_ Net-_U1-Pad6_ Net-_U1-Pad7_ Net-_U1-Pad8_ Net-_U1-Pad9_ Net-_U1-Pad10_ Net-_U1-Pad11_ Net-_U1-Pad12_ y7 y6 y5 y4 y3 y2 y1 y0 dac_bridge_8		
+v1  a2 GND pulse		
+v2  a1 GND pulse		
+v3  a0 GND pulse		
+v4  Net-_U2-Pad4_ GND DC		
+U4  y7 plot_v1		
+U5  y6 plot_v1		
+U6  y5 plot_v1		
+U7  y4 plot_v1		
+U8  y3 plot_v1		
+U9  y2 plot_v1		
+U10  y1 plot_v1		
+U11  y0 plot_v1		
+U12  a2 plot_v1		
+U13  a1 plot_v1		
+U14  a0 plot_v1		
+
+.end
