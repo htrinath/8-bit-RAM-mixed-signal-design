@@ -168,7 +168,7 @@ After making the schematic and generating the netlist go back to eSim; select th
 
 • Refer to the netlist of the 1-Bit SRAM here: <a href='1-bit_RAM/1-bit_RAM.cir.out'>Netlist</a></br>
 
-• Refer to the netlist of the 8-Bit SRAM here: <a href="8-bit_RAM/8-bit_RAM.cir.out'>Netlist</a></br>
+• Refer to the netlist of the 8-Bit SRAM here: <a href='8-bit_RAM/8-bit_RAM.cir.out'>Netlist</a></br>
 
 # Author:
 • Trinath Harikrishna, B.Tech(ECE), SRM Institute of Science and Technology, Kattankulattur, Chennai-603203.
